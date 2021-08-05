@@ -1,4 +1,4 @@
-@include('layout.header')
+
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
@@ -8,8 +8,8 @@
     </div>
 
     <!-- Navbar -->
-@include('layout.navbar')
-<!-- /.navbar -->
+    @include('layout.navbar')
+    <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -20,8 +20,8 @@
         </a>
 
         <!-- Sidebar -->
-    @include('layout.sidebar')
-    <!-- /.sidebar -->
+        @include('layout.sidebar')
+        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
@@ -29,8 +29,8 @@
 
 
         <!-- Main content -->
-    @yield('content')
-    <!-- /.content -->
+        @yield('content')
+        <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
@@ -43,4 +43,3 @@
     <!-- Main Footer -->
 </div>
 <!-- ./wrapper -->
-@include('layout.footer')
