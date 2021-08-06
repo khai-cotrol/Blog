@@ -1,4 +1,4 @@
-
+@include('layout.header')
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
@@ -42,4 +42,5 @@
 
     <!-- Main Footer -->
 </div>
+@include('layout.footer')
 <!-- ./wrapper -->

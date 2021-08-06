@@ -78,7 +78,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('product.list')}}" class="nav-link">
                                     <p>List</p>
                                 </a>
                             </li>
