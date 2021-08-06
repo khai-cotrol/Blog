@@ -17,6 +17,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
+                            <th></th>
                             <th>Name</th>
                             <th>Price</th>
                             <th>img</th>
@@ -28,13 +29,14 @@
                         <tbody>
                         @foreach($products as $product)
                             <tr>
+                                <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->price}}</td>
                                 <td>{{ $product->img}}</td>
 {{--                                <td>{{ $product->categori_id}}</td>--}}
 {{--                                                                <td><img src="{{ $customer->img }}" alt=""></td>--}}
                                 <td>
-                                    <a href="{{route('product.delete')}}" class="btn btn-danger">Delete</a>
+                                    <a href="{{route('product.delete',$product->id)}}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
