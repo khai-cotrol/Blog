@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,14 +15,26 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('layout.master');
+Route::get('/', function (){
+   return view('customer.login');
 });
-Route::prefix('/low-budget')->group(function (){
-    Route::get('/',[\App\Http\Controllers\ProductController::class,'index'])->name('product.list');
-    Route::get('/create',[\App\Http\Controllers\ProductController::class,'create'])->name('product.create');
-    Route::post('/create',[\App\Http\Controllers\ProductController::class,'store'])->name('product.store');
-    Route::get('/delete/{id}', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
+Route::get('/login', [LoginController::class, 'showFormLogin'])->name('formLogin');
+Route::get('/register', [LoginController::class, 'showFormRegister'])->name('formRegister');
 
+Route::prefix('/low-budget')->group(function () {
+    Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('product.list');
+    Route::get('/create', [\App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
+    Route::post('/create', [\App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
+    Route::get('/delete/{id}', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
+});
+
+
+Route::prefix('user')->group(function (){
+    Route::get('list', [UserController::class, 'index'])->name('user.list');
+    Route::get('adduser', [UserController::class, 'create'])->name('user.adduser');
+    Route::post('create', [UserController::class, 'store'])->name('user.create');
+    Route::get('edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::post('update/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::get('{id}/delete', [UserController::class, 'destroy'])->name('user.delete');
+    Route::get('{id}/profile', [UserController::class, 'show'])->name('user.profile');
 });

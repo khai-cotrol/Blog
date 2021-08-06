@@ -1,6 +1,6 @@
 @include('layout.header')
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-<div class="wrapper">
+<div class="card-success">
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
