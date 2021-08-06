@@ -22,5 +22,6 @@
 <script src="{{asset('js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('js/pages/dashboard2.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

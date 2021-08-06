@@ -12,4 +12,8 @@ class Product extends Model
     function categories(){
         return $this->belongsTo(Categories::class);
     }
+
+    function user(){
+        return $this->belongsTo(User::class);
+    }
 }
