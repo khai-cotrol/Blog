@@ -21,6 +21,14 @@ Route::get('/', function (){
 Route::get('/login', [LoginController::class, 'showFormLogin'])->name('formLogin');
 Route::get('/register', [LoginController::class, 'showFormRegister'])->name('formRegister');
 
+Route::prefix('/low-budget')->group(function () {
+    Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('product.list');
+    Route::get('/create', [\App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
+    Route::post('/create', [\App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
+    Route::get('/delete/{id}', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
+});
+
+
 Route::prefix('user')->group(function (){
     Route::get('list', [UserController::class, 'index'])->name('user.list');
     Route::get('adduser', [UserController::class, 'create'])->name('user.adduser');

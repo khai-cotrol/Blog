@@ -31,7 +31,6 @@ class ProductFactory extends Factory
             'price'=>$this->faker->numberBetween(),
             'img'=>$this->faker->name(),
             'user_id'=>$this->faker->randomElement($user)
-
         ];
     }
 }
