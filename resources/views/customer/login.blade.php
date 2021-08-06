@@ -6,27 +6,32 @@
     <title>AdminLTE 3 | Log in (v2)</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
     <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="css/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('css/icheck-bootstrap.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="css/adminlte.min.css">
+    <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <a href="" class="h1"><b>Cốt Dim</b>Member</a>
+            <a href="" class="h1"><b>CốtDim</b>Mon</a>
         </div>
         <div class="card-body">
             <p class="login-box-msg">Sign in to start your session</p>
-
-            <form action="" method="post">
+            @if(session()->has('login_error'))
+                <p class="text-danger">{{session('login_error')}}</p>
+            @endif
+            <form action="{{route('login')}}" method="post">
+                @csrf
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="name" name="name" class="form-control" placeholder="Email">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -34,7 +39,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-eye-slash"></span>
@@ -82,10 +87,10 @@
 <!-- /.login-box -->
 
 <!-- jQuery -->
-<script src="jquery.min.js"></script>
+<script src="{{asset('jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
-<script src="js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="js/adminlte.min.js"></script>
+<script src="{{asset('js/adminlte.min.js')}}"></script>
 </body>
 </html>
