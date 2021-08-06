@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -27,7 +29,7 @@ class LoginController extends Controller
     {
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->save();
@@ -53,7 +55,13 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-
+        $data = $request->only('name', 'password');
+        if (Auth::attempt($data)) {
+            return redirect()->route('home');
+        } else {
+            session()->flash('login_error', 'Account not exits');
+            return redirect()->route('formLogin');
+        }
     }
 
     /**
@@ -62,9 +70,10 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function logout()
     {
-        //
+        Auth::logout();
+        return redirect()->route('formLogin');
     }
 
     /**

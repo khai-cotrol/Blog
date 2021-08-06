@@ -34,7 +34,7 @@
 {{--                                <td>{{ $product->categori_id}}</td>--}}
 {{--                                                                <td><img src="{{ $customer->img }}" alt=""></td>--}}
                                 <td>
-                                    <a href="{{route('product.delete')}}" class="btn btn-danger">Delete</a>
+                                    <a href="{{route('product.delete', $product->id)}}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
