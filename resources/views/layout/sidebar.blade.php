@@ -12,10 +12,11 @@ $categories =\App\Models\Categories::all();
         </div>
     </div>
     <!-- SidebarSearch Form -->
-    <form action="" method="post">
+    <form action="{{route('user.search')}}" method="post">
+        @csrf
         <div class="form-inline">
             <div class="input-group">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" name="name" aria-label="Search">
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-sidebar">
                         <i class="fas fa-search fa-fw"></i>

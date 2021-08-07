@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/create', [ProductController::class, 'store'])->name('product.store');
         Route::get('/{id}/delete', [ProductController::class, 'destroy'])->name('product.delete');
         Route::get('/category/{id}',[ProductController::class,'productByCate'])->name('productByCate');
+        Route::post('/search', [UserController::class, 'search'])->name('user.search');
+        Route::post('/search/product', [ProductController::class, 'search'])->name('product.search');
 
     });
 
