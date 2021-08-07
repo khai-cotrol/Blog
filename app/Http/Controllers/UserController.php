@@ -126,4 +126,11 @@ class UserController extends Controller
         $user->delete();
         return response()->json(['message' => 'Delete success']);
     }
+
+    public function search(Request $request)
+    {
+        $text = $request->name;
+        $users = User::where('name', 'LIKE' , '%' . $text . '%')->get();
+        return view('admin.user.result_search', compact('users'));
+    }
 }
