@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,15 +17,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function (){
-   return view('customer.login');
+Route::get('/', function () {
+    return view('customer.login');
 });
 Route::get('/login', [LoginController::class, 'showFormLogin'])->name('formLogin');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'showFormRegister'])->name('formRegister');
 Route::post('/register', [LoginController::class, 'register'])->name('register');
 
-Route::middleware('auth')->group(function (){
+Route::get('/auth/google', [SocialController::class,'redirect'])->name('auth.google');
+Route::get('/auth/google/callback', [SocialController::class, 'callback']);
+
+
+Route::middleware('auth')->group(function () {
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::prefix('/low-budget')->group(function () {
@@ -33,9 +39,15 @@ Route::middleware('auth')->group(function (){
         Route::get('/delete/{id}', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
     });
 
+
+    Route::post('/post', [PostController::class, 'post'])->name('status.post');
+    Route::post('/comment', [CommentController::class, 'comment'])->name('status.comment');
+    Route::get('/status/{id}', [CommentController::class, 'index'])->name('commentByPost');
+    Route::get('/delete/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+
     Route::get('/home', [PostController::class, 'index'])->name('home');
 
-    Route::prefix('user')->group(function (){
+    Route::prefix('user')->group(function () {
         Route::get('list', [UserController::class, 'index'])->name('user.list');
         Route::get('adduser', [UserController::class, 'create'])->name('user.adduser');
         Route::post('create', [UserController::class, 'store'])->name('user.create');

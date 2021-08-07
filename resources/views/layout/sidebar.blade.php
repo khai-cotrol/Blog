@@ -8,18 +8,19 @@
             <a href="#" class="d-block">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
         </div>
     </div>
-
     <!-- SidebarSearch Form -->
-    <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                    <i class="fas fa-search fa-fw"></i>
-                </button>
+    <form action="" method="post">
+        <div class="form-inline">
+            <div class="input-group">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -41,10 +42,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                            <a href="{{route('user.adduser')}}" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add New</p>
-                            </a>
+                        <a href="{{route('user.adduser')}}" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add New</p>
+                        </a>
                     </li>
                 </ul>
             </li>
