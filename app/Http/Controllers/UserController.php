@@ -117,6 +117,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->roles()->delete();
         $user->product()->delete();
+        $user->post()->delete();
         $user->delete();
         return response()->json(['message' => 'Delete success']);
     }

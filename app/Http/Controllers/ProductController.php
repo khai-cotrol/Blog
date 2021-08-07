@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('shop.create');
+        $categories = Categories::all();
+        return view('shop.create', compact('categories'));
     }
 
     /**
@@ -47,7 +49,7 @@ class ProductController extends Controller
         $product->name =$request->input('name');
         $product->price =$request->input('price');
         $product->img =$request->input('img');
-        $product->category_id=$request->input('category_id');
+        $product->category_id=$request->input('categories');
         $product->user_id=$request->input('user_id');
         $product->save();
         return redirect()->route('product.list');
@@ -99,5 +101,10 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
         return redirect()->route('product.list');
+    }
+    public function productByCate($id)
+    {
+        $products = Product::all()->where('category_id',$id);
+        return view('shop.list',compact('products'));
     }
 }
