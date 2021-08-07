@@ -100,8 +100,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->delete();
-        return redirect()->back();
-//        return response()->json(['message' => 'Delete success']);
+        return response()->json(['message' => 'Delete success']);
     }
     public function productByCate($id)
     {
