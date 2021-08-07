@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/create', [\App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
         Route::post('/create', [\App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
         Route::get('/delete/{id}', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
+        Route::get('/category/{id}',[\App\Http\Controllers\ProductController::class,'productByCate'])->name('productByCate');
     });
 
 

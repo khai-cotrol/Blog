@@ -27,12 +27,16 @@
                     <input type="text" id="inputImg" name="img" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="inputCategory_id">category_id</label>
-                    <input type="number" id="inputCategory_id" name="category_id" class="form-control">
+                    <label for="inputCategory_id">category</label>
+                    <select name="categories" id="">
+                        @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                 <label for="inputUser_id">User_id</label>
-                <input type="number" id="inputUser_id" name="user_id" class="form-control">
+                <input type="number" id="inputUser_id" name="user_id" class="form-control" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
             </div>
                 <button type="submit" class="btn btn-success">Accept</button>
                 <a href="{{route('product.list')}}" class="btn btn-secondary">Cancel</a>
