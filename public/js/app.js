@@ -11,4 +11,33 @@ $(document).ready(function (){
             }
         })
     })
+
+    $('.delete-product').click(function (){
+        // alert(1223)
+        let idProduct = $(this).attr('data-id')
+        let origin = location.origin
+        $.ajax({
+            url: origin + '/low-budget/' + idProduct + '/delete' ,
+            method: 'GET',
+            type: 'json',
+            success: function (res) {
+                console.log(res)
+                // alert(1)
+                // $('#product-' + idProduct).remove()
+            },
+            error: function () {
+                alert("You can't delete this product!!!")
+            }
+        })
+    })
+
+    $('#icon-eye').click(function (){
+        let type = $('#password').attr('type')
+        newType = (type === 'password') ? 'text' : 'password'
+        $('#password').attr('type', newType)
+
+        let classIcon = (type === 'password') ? 'fas fa-eye' : 'fas fa-eye-slash'
+        $('#icon-slash').removeClass()
+        $('#icon-slash').addClass(classIcon)
+    })
 })

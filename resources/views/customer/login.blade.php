@@ -31,18 +31,18 @@
             <form action="{{route('login')}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="name" name="name" class="form-control" placeholder="Email">
+                    <input type="name" name="name"  class="form-control" placeholder="Email">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
+                            <i class="fas fa-envelope"></i>
                         </div>
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
                     <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-eye-slash"></span>
+                        <div class="input-group-text"  id="icon-eye">
+                            <i class="fas fa-eye-slash" id="icon-slash"></i>
                         </div>
                     </div>
                 </div>
@@ -87,10 +87,13 @@
 <!-- /.login-box -->
 
 <!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script src="{{asset('jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('js/adminlte.min.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

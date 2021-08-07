@@ -100,13 +100,14 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product->delete();
-        return redirect()->route('product.list');
+        return response()->json(['message' => 'Delete success']);
     }
     public function productByCate($id)
     {
         $products = Product::all()->where('category_id',$id);
         return view('shop.list',compact('products'));
     }
+
     public function productOfUser($id)
     {
         $products =Product::where('user_id',$id)->get();
