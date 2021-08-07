@@ -1,3 +1,6 @@
+<?php
+$categories =\App\Models\Categories::all()
+?>
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -67,6 +70,25 @@
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Categories</p>
+                                    <span class="badge badge-info right">{{count($categories)}}</span>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @foreach($categories as $category)
+                                        <li class="nav-item">
+                                            <a href="{{route('productByCate', $category->id)}}" class="nav-link">
+                                                <i class="fas fa-arrow-right"></i>
+                                                <p>{{$category->name}}</p>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="" class="nav-link">
