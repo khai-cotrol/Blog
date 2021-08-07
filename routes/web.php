@@ -24,7 +24,6 @@ Route::get('/login', [LoginController::class, 'showFormLogin'])->name('formLogin
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'showFormRegister'])->name('formRegister');
 Route::post('/register', [LoginController::class, 'register'])->name('register');
-
 Route::get('/auth/google', [SocialController::class,'redirect'])->name('auth.google');
 Route::get('/auth/google/callback', [SocialController::class, 'callback']);
 
@@ -38,8 +37,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/create', [\App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
         Route::get('/delete/{id}', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
         Route::get('/category/{id}',[\App\Http\Controllers\ProductController::class,'productByCate'])->name('productByCate');
+        Route::get('/product/{id}',[\App\Http\Controllers\ProductController::class,'productOfUser'])->name('productOfUser');
     });
-
 
     Route::post('/post', [PostController::class, 'post'])->name('status.post');
     Route::post('/comment', [CommentController::class, 'comment'])->name('status.comment');
