@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'provider',
+        'provider_id'
     ];
 
     /**
@@ -46,11 +48,17 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'roles_user', 'user_id', 'role_id');
     }
 
-    function product() {
+
+    function products() {
         return $this->hasMany(Product::class);
     }
 
-    function post() {
+    function posts() {
         return $this->hasMany(Post::class);
+    }
+
+    function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Comment::class);
     }
 }
