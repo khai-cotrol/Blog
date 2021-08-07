@@ -36,7 +36,8 @@
                                 <td>{{ $product->category['name']}}</td>
 {{--                                                                <td><img src="{{ $customer->img }}" alt=""></td>--}}
                                 <td>
-                                    <button type="button" data-id="{{$product->id}}" onclick="return confirm('Are you sure?')" class="delete-product btn btn-danger form-control">Delete</button>
+                                    <a href="{{route('product.delete', $product->id)}}">delete</a>
+{{--                                    <button type="button" data-id="{{$product->id}}" onclick="return confirm('Are you sure?')" class="delete-product btn btn-danger form-control">Delete</button>--}}
                                 </td>
                             </tr>
                         @endforeach

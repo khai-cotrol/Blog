@@ -21,9 +21,7 @@ $(document).ready(function (){
             method: 'GET',
             type: 'json',
             success: function (res) {
-                console.log(res)
-                // alert(1)
-                // $('#product-' + idProduct).remove()
+                $('#product-' + idProduct).remove()
             },
             error: function () {
                 alert("You can't delete this product!!!")
