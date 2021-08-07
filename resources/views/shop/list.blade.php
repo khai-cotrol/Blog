@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                         @foreach($products as $product)
-                            <tr>
+                            <tr id="product-{{$product->id}}">
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>${{ $product->price}}</td>
@@ -36,7 +36,7 @@
                                 <td>{{ $product->category['name']}}</td>
 {{--                                                                <td><img src="{{ $customer->img }}" alt=""></td>--}}
                                 <td>
-                                    <a href="{{route('product.delete',$product->id)}}" class="btn btn-danger">Delete</a>
+                                    <button type="button" data-id="{{$product->id}}" onclick="return confirm('Are you sure?')" class="delete-product btn btn-danger form-control">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
