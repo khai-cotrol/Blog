@@ -1,5 +1,5 @@
 <?php
-$categories =\App\Models\Categories::all()
+$categories =\App\Models\Categories::all();
 ?>
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
@@ -111,6 +111,15 @@ $categories =\App\Models\Categories::all()
                                 </a>
                             </li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('productOfUser',\Illuminate\Support\Facades\Auth::user()->id)}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>
+                                Products of User
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
                     </li>
                 </ul>
             </li>

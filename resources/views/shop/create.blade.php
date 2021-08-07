@@ -35,8 +35,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                <label for="inputUser_id">User_id</label>
-                <input type="number" id="inputUser_id" name="user_id" class="form-control" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
+                <input hidden type="number" id="inputUser_id" name="user_id" class="form-control" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
             </div>
                 <button type="submit" class="btn btn-success">Accept</button>
                 <a href="{{route('product.list')}}" class="btn btn-secondary">Cancel</a>

@@ -25,7 +25,6 @@ Route::get('/login', [LoginController::class, 'showFormLogin'])->name('formLogin
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'showFormRegister'])->name('formRegister');
 Route::post('/register', [LoginController::class, 'register'])->name('register');
-
 Route::get('/auth/google', [SocialController::class,'redirect'])->name('auth.google');
 Route::get('/auth/google/callback', [SocialController::class, 'callback']);
 
@@ -34,13 +33,14 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::prefix('/low-budget')->group(function () {
+        Route::get('/product/{id}',[ProductController::class,'productOfUser'])->name('productOfUser');
         Route::get('/', [ProductController::class, 'index'])->name('product.list');
         Route::get('/create', [ProductController::class, 'create'])->name('product.create');
         Route::post('/create', [ProductController::class, 'store'])->name('product.store');
         Route::get('/{id}/delete', [ProductController::class, 'destroy'])->name('product.delete');
         Route::get('/category/{id}',[ProductController::class,'productByCate'])->name('productByCate');
-    });
 
+    });
 
     Route::post('/post', [PostController::class, 'post'])->name('status.post');
     Route::post('/comment', [CommentController::class, 'comment'])->name('status.comment');

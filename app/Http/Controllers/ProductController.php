@@ -108,4 +108,9 @@ class ProductController extends Controller
         return view('shop.list',compact('products'));
     }
 
+    public function productOfUser($id)
+    {
+        $products =Product::where('user_id',$id)->get();
+        return view('shop.list',compact('products'));
+    }
 }
