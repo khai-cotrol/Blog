@@ -131,4 +131,11 @@ class ProductController extends Controller
         $products =Product::where('user_id',$id)->get();
         return view('shop.list',compact('products'));
     }
+
+    public function search(Request $request)
+    {
+        $text = $request->name;
+        $products = Product::where('name', 'LIKE', '%'.$text.'%')->get();
+        return view('shop.result_search', compact('products'));
+    }
 }
