@@ -16,10 +16,13 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
     protected $fillable = [
         'name',
         'email',
         'password',
+        'provider',
+        'provider_id'
     ];
 
     /**
@@ -40,4 +43,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function roles(){
+        return $this->belongsToMany(Role::class, 'roles_user', 'user_id', 'role_id');
+    }
+
+
+    function products() {
+        return $this->hasMany(Product::class);
+    }
+
+    function posts() {
+        return $this->hasMany(Post::class);
+    }
+
+    function comments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
