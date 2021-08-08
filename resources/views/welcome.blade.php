@@ -65,7 +65,7 @@
                                             <a href="{{route('user.profile', $post->user->id)}}">{{$post->user->name}}</a>
                                             @if(\Illuminate\Support\Facades\Auth::user()->name == $post->user->name)
                                             <button class="delete-post float-right btn-tool"><a
-                                                    href="{{route('post.delete')}}" class="fas fa-times"></a></button>
+                                                    href="{{route('post.delete', $post->id)}}" class="fas fa-times"></a></button>
                                             @endif
                                         </span>
                                         <span class="description">{{$post->created_at}}</span>
