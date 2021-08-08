@@ -155,8 +155,7 @@
                                                     <input type="text" hidden name="post_id" value="{{$posts->id}}">
                                                     <div class="input-group-append">
                                                         <div class="input-group-text">
-                                                            <button type="submit" class="far fa-comment-dots"><a
-                                                                    href="{{route('post.delete', $posts->id)}}"></a></button>
+                                                            <button class="far fa-comment-dots"><a href="{{route('post.delete', $posts->id)}}"></a></button>
                                                         </div>
                                                     </div>
                                                 </div>
