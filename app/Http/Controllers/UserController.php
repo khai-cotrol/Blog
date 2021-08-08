@@ -133,7 +133,7 @@ class UserController extends Controller
         $user->posts()->delete();
         $user->comments()->delete();
         $user->delete();
-        return response()->json(['message' => 'Delete success']);
+        return redirect()->back();
     }
 
     public function search(Request $request)

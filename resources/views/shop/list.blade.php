@@ -39,7 +39,8 @@
                                 <td>
                                     <button class="btn btn-danger">Add To Cart</button>
                                 @can('crud')
-                                    <button type="button" data-id="{{$product->id}}" onclick="return confirm('Are you sure?')" class="delete-product btn btn-danger ">Delete</button>
+                                    <button onclick="return confirm('Are you sure?')" class="delete-product btn btn-danger ">
+                                        <a href="{{route('product.delete', $product->id)}}"></a></button>
                                     <a href="{{route('product.edit', $product->id)}}"class="btn btn-danger">edit</a>
                                     @endcan
                                 </td>

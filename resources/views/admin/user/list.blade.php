@@ -40,7 +40,8 @@
                             <a href="{{route('user.profile', $user->id)}}" class="btn btn-primary form-control">View</a>
                             @can('crud')
                             <a href="{{route('user.edit', $user->id)}}" class="btn btn-primary form-control">Update</a>
-                            <button type="button" data-id="{{$user->id}}" onclick="return confirm('Are you sure?')" class="delete-user btn btn-danger form-control">Delete</button>
+                            <button onclick="return confirm('Are you sure?')" class="delete-user btn btn-danger form-control">
+                                <a href="{{route('user.delete', $user->id)}}"></a></button>
                             @endcan
                         </td>
                     </tr>
