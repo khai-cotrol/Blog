@@ -121,7 +121,7 @@
                                         <div class="post">
                                             <div class="user-block">
                                                 <img class="img-circle img-bordered-sm"
-                                                     src="{{asset('storage/'.$user->img)}}" alt="user image">
+                                                     src="{{asset('storage/'.$user->img)}}" alt="">
                                                 <span class="username">
                           <a href="#">{{$user->name}}</a>
                           <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>

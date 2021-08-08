@@ -24,7 +24,7 @@
                 @foreach($users as $user)
                     <tr id="user-{{$user->id}}">
                         <td>{{$user->id}}</td>
-                        <td><img src="{{asset('storage/'. $user->img)}}" style="width: 100px" alt="error"></td>
+                        <td><img src="{{asset('storage/'. $user->img)}}" style="width: 100px" alt=""></td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->phone}}</td>
