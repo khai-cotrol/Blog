@@ -124,7 +124,7 @@
                                                      src="{{asset('storage/'.$user->img)}}" alt="">
                                                 <span class="username">
                           <a href="#">{{$user->name}}</a>
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                          <a href="{{route('post.delete', $posts->id)}}" class="float-right btn-tool"><i class="fas fa-times"></i></a>
                         </span>
                                                 <span class="description">{{$posts->created_at}}</span>
                                             </div>
