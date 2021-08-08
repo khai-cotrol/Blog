@@ -9,9 +9,9 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 @can('crud')
-                <h6 class="m-0 font-weight-bold text-primary">
-                    <a class="btn btn-success" href="{{route('product.create')}}">Them moi</a>
-                </h6>
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <a class="btn btn-success" href="{{route('product.create')}}">Them moi</a>
+                    </h6>
                 @endcan
             </div>
             <div class="card-body">
@@ -32,16 +32,18 @@
                         @foreach($products as $product)
                             <tr id="product-{{$product->id}}">
                                 <td>{{ $product->id }}</td>
-                                <td><img src="{{asset('storage/'. $product->img)}}" style="width: 100px" alt="error"></td>
+                                <td><img src="{{asset('storage/'. $product->img)}}" style="width: 100px" alt="error">
+                                </td>
                                 <td><h4>{{ $product->name }}</h4></td>
                                 <td>${{ $product->price}}</td>
                                 <td>{{ $product->category['name']}}</td>
                                 <td>
                                     <button class="btn btn-danger">Add To Cart</button>
-                                @can('crud')
-                                    <button onclick="return confirm('Are you sure?')" class="delete-product btn btn-danger ">
-                                        <a href="{{route('product.delete', $product->id)}}"></a></button>
-                                    <a href="{{route('product.edit', $product->id)}}"class="btn btn-danger">edit</a>
+                                    @can('crud')
+                                        <a href="{{route('product.delete', $product->id)}}"
+                                           class="btn btn-danger">Delete</a>
+                                        <a href="{{route('product.edit', $product->id)}}"
+                                           class="btn btn-danger">edit</a>
                                     @endcan
                                 </td>
                             </tr>
