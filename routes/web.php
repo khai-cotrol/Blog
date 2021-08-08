@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::post('/post', [PostController::class, 'post'])->name('status.post');
-    Route::get('/postDelete/{id}', [PostController::class, 'destroy']);
+    Route::get('/postDelete/{id}', [PostController::class, 'destroy'])->name('post.delete');
     Route::post('/comment', [CommentController::class, 'comment'])->name('status.comment');
     Route::get('/status/{id}', [CommentController::class, 'index'])->name('commentByPost');
     Route::get('/delete/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
