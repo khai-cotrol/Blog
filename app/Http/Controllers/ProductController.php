@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -46,9 +47,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product();
+        $path = $request->file('image')->store('images','public');
+        $product->img =$path;
         $product->name =$request->input('name');
         $product->price =$request->input('price');
-        $product->img =$request->input('img');
         $product->category_id=$request->input('categories');
         $product->user_id=$request->input('user_id');
         $product->save();
@@ -75,7 +77,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return  view('shop.update',compact('product'));
     }
 
     /**
@@ -87,7 +90,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+        if (!$request->hasFile('image')){
+            $path = $product->img;
+        }else{
+            $path = $request->file('image')->store('images','public');
+        }
+        $data=[
+            'name'=>$request->name,
+            'price'=>$request->price,
+            'category_id'=>$request->categories,
+            'user_id'=>$request->user_id,
+            'img'=>$path
+        ];
+        DB::table('products')->where('id',$id)->update($data);
+        return redirect()->route('product.list');
+
     }
 
     /**

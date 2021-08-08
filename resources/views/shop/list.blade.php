@@ -18,9 +18,9 @@
                         <thead>
                         <tr>
                             <th></th>
+                            <th>img</th>
                             <th>Name</th>
                             <th>Price</th>
-                            <th>img</th>
                             <th>categories</th>
                             {{--                            <th>Image</th>--}}
                             <th>action</th>
@@ -30,12 +30,13 @@
                         @foreach($products as $product)
                             <tr id="product-{{$product->id}}">
                                 <td>{{ $product->id }}</td>
-                                <td>{{ $product->name }}</td>
+                                <td><img src="{{asset('storage/'. $product->img)}}" style="width: 100px" alt="error"></td>
+                                <td><h4>{{ $product->name }}</h4></td>
                                 <td>${{ $product->price}}</td>
-                                <td>{{ $product->img}}</td>
                                 <td>{{ $product->category['name']}}</td>
                                 <td>
-                                    <button type="button" data-id="{{$product->id}}" onclick="return confirm('Are you sure?')" class="delete-product btn btn-danger form-control">Delete</button>
+                                    <button type="button" data-id="{{$product->id}}" onclick="return confirm('Are you sure?')" class="delete-product btn btn-danger ">Delete</button>
+                                    <a href="{{route('product.edit', $product->id)}}"class="btn btn-danger">edit</a></td>
                                 </td>
                             </tr>
                         @endforeach
