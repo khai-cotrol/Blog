@@ -63,7 +63,7 @@
                                              src="{{asset('storage/' . $post->user->img)}}" alt="">
                                         <span class="username">
                                             <a href="{{route('user.profile', $post->user->id)}}">{{$post->user->name}}</a>
-                                            @if(\Illuminate\Support\Facades\Auth::user() == $post->user)
+                                            @if(\Illuminate\Support\Facades\Auth::user()->name == $post->user->name)
                                             <button type="button" data-id="{{$post->id}}" class="delete-post float-right btn-tool"><i class="fas fa-times"></i></button>
                                             @endif
                                         </span>

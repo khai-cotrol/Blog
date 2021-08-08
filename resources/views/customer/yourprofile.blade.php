@@ -46,7 +46,7 @@
                                 </li>
                             </ul>
 
-                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                            <a href="{{route('user.edit', \Illuminate\Support\Facades\Auth::id())}}" class="btn btn-primary btn-block"><b>Update Your Infor</b></a>
                         </div>
                         <!-- /.card-body -->
                     </div>
