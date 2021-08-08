@@ -44,7 +44,7 @@
                                                  alt="">
                                             <span class="username">
                                             <a href="#">{{$comment->user->name}}</a>
-                                                @if(\Illuminate\Support\Facades\Auth::user() == $comment->user)
+                                                @if(\Illuminate\Support\Facades\Auth::user()->name == $comment->user->name)
                                                     <a href="{{route('comment.destroy', $comment->id)}}">xoas</a>
 {{--                                                    <button type="button" data-id="{{$comment->id}}" class="delete-comment float-right btn-tool"><i class="fas fa-times"></i></button>--}}
                                                 @endif
