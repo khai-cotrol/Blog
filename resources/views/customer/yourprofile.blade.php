@@ -141,14 +141,26 @@
                                                         class="far fa-thumbs-up mr-1"></i>
                                                     Like</a>
                                                 <span class="float-right">
-                          <a href="#" class="link-black text-sm">
-                            <i class="far fa-comments mr-1"></i> Comments (5)
-                          </a>
-                        </span>
+                                                <a href="{{route('commentByPost', $posts->id)}}" class="link-black text-sm">
+                                                    <input type="hidden" value="{{$comment = \App\Models\Comment::where('post_id', $posts->id)}}">
+                                                    <i class="far fa-comments mr-1"></i> Comments ({{count($comment)}})
+                                                </a>
+                                                </span>
                                             </p>
-
-                                            <input class="form-control form-control-sm" type="text"
-                                                   placeholder="Type a comment">
+                                            <form action="{{route('status.comment')}}" method="post">
+                                                @csrf
+                                                <div class="input-group mb-3">
+                                                    <input type="text" name="comment" class="form-control" placeholder="Comment">
+                                                    <input type="text" hidden name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
+                                                    <input type="text" hidden name="post_id" value="{{$posts->id}}">
+                                                    <div class="input-group-append">
+                                                        <div class="input-group-text">
+                                                            <button type="submit" class="far fa-comment-dots"><a
+                                                                    href="{{route('post.delete', $posts->id)}}"></a></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                         <!-- /.post -->
 
