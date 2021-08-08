@@ -64,6 +64,7 @@
                     <input type="file" value="}" name="image" id="image"
                            class="form-control">
                 </div>
+                @can('crud')
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Role</label>
                     <div class="col-sm-10 ">
@@ -79,6 +80,7 @@
                         @endforeach
                     </div>
                 </div>
+                @endcan
                 <button type="submit" class="btn btn-success">Accept</button>
                 <a href="{{route('user.list')}}" class="btn btn-secondary">Cancel</a>
             </div>
