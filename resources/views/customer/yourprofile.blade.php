@@ -142,7 +142,7 @@
                                                     Like</a>
                                                 <span class="float-right">
                                                 <a href="{{route('commentByPost', $posts->id)}}" class="link-black text-sm">
-                                                    <input type="hidden" value="{{$comment = \App\Models\Comment::where('post_id', $posts->id)}}">
+                                                    <input type="hidden" value="{{$comment = \App\Models\Comment::where('post_id', $posts->id)->get()}}">
                                                     <i class="far fa-comments mr-1"></i> Comments ({{count($comment)}})
                                                 </a>
                                                 </span>
