@@ -25,8 +25,8 @@ Route::get('/login', [LoginController::class, 'showFormLogin'])->name('formLogin
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'showFormRegister'])->name('formRegister');
 Route::post('/register', [LoginController::class, 'register'])->name('register');
-Route::get('/auth/google', [SocialController::class,'redirect'])->name('auth.google');
-Route::get('/auth/google/callback', [SocialController::class, 'callback']);
+Route::get('/auth/google', [SocialController::class,'redirect']);
+Route::get('/auth/callback/google', [SocialController::class, 'callback']);
 
 
 Route::middleware('auth')->group(function () {
@@ -45,14 +45,15 @@ Route::middleware('auth')->group(function () {
 
         Route::post('/search', [UserController::class, 'search'])->name('user.search');
         Route::post('/search/product', [ProductController::class, 'search'])->name('product.search');
-     
+
 
     });
 
     Route::post('/post', [PostController::class, 'post'])->name('status.post');
+    Route::get('/postDelete/{id}', [PostController::class, 'destroy']);
     Route::post('/comment', [CommentController::class, 'comment'])->name('status.comment');
     Route::get('/status/{id}', [CommentController::class, 'index'])->name('commentByPost');
-    Route::get('/delete/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+    Route::get('/delete/{id}', [CommentController::class, 'destroy']);
 
     Route::get('/home', [PostController::class, 'index'])->name('home');
 
@@ -64,6 +65,7 @@ Route::middleware('auth')->group(function () {
         Route::post('update/{id}', [UserController::class, 'update'])->name('user.update');
         Route::get('{id}/delete', [UserController::class, 'destroy'])->name('user.delete');
         Route::get('{id}/profile', [UserController::class, 'show'])->name('user.profile');
+        Route::get('myProfile{id}', [UserController::class, 'myProfile'])->name('myProfile');
     });
 });
 

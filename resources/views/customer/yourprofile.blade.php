@@ -103,6 +103,16 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="card-header p-2">
+                            <form action="{{route('status.post')}}" method="post">
+                                @csrf
+                                <label for="">Hôm nay bạn nghĩ gì {{\Illuminate\Support\Facades\Auth::user()->name}} ơi???</label>
+                                <input type="text" name="title" class="form-control" placeholder="Title" style="background-color: white; color: black">
+                                <textarea name="post" id="" cols="118" placeholder="   Your Status..." rows="5"></textarea>
+                                <input type="number" hidden name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
+                                <button type="submit" class="btn btn-success">Share</button>
+                            </form>
+                        </div>
                         @foreach($allPosts as $posts)
                             <div class="card-body">
                                 <div class="tab-content">
@@ -131,25 +141,14 @@
                                                         class="far fa-thumbs-up mr-1"></i>
                                                     Like</a>
                                                 <span class="float-right">
-                                                    <input type="hidden" value="{{$comment = \App\Models\Comment::where('post_id', $posts->id)->get()}}">
-                                                <a href="{{route('commentByPost', $posts->id)}}" class="link-black text-sm">
-                                                    <i class="far fa-comments mr-1"></i> Comments ({{count($comment)}})
-                                                </a>
-                                                </span>
+                          <a href="#" class="link-black text-sm">
+                            <i class="far fa-comments mr-1"></i> Comments (5)
+                          </a>
+                        </span>
                                             </p>
-                                            <form action="{{route('status.comment')}}" method="post">
-                                                @csrf
-                                                <div class="input-group mb-3">
-                                                    <input type="text" name="comment" class="form-control" placeholder="Comment">
-                                                    <input type="text" hidden name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
-                                                    <input type="text" hidden name="post_id" value="{{$posts->id}}">
-                                                    <div class="input-group-append">
-                                                        <div class="input-group-text">
-                                                            <button type="submit" class="far fa-comment-dots"></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
+
+                                            <input class="form-control form-control-sm" type="text"
+                                                   placeholder="Type a comment">
                                         </div>
                                         <!-- /.post -->
 

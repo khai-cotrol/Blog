@@ -45,12 +45,9 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        if (!Gate::allows('crud')) {
-            abort(403);
-        }
         $comment = Comment::findOrFail($id);
         $comment->delete();
-        return redirect()->back();
+        return response()->json(['message' => 'Delete success']);
     }
 
     /**

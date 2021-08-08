@@ -6,6 +6,7 @@ use App\Models\Categories;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -128,6 +129,9 @@ class ProductController extends Controller
 
     public function productOfUser($id)
     {
+        if (!Gate::allows('crud')){
+            abort(403);
+        }
         $products =Product::where('user_id',$id)->get();
         return view('shop.list',compact('products'));
     }

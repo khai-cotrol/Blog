@@ -37,28 +37,25 @@
                         <div class="tab-content">
                             <div class="active tab-pane" id="activity">
                                 <div class="post">
-                                    <div class="user-block">
-                                        @foreach($comments as $comment)
+                                    @foreach($comments as $comment)
+                                    <div class="user-block" id="comment-{{$comment->id}}">
                                             <img class="img-circle img-bordered-sm" style="width: 30px"
                                                  src="{{asset('storage/' . $comment->user->img)}}"
                                                  alt="">
                                             <span class="username">
-                            <a href="#">{{$comment->user->name}}</a>
-                                                @can('crud')
-                                                    <a href="{{route('comment.destroy', $comment->id)}}"
-                                                       class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                                                @endcan
+                                            <a href="#">{{$comment->user->name}}</a>
+                                                @if(\Illuminate\Support\Facades\Auth::user() == $comment->user)
+                                                    <button type="button" data-id="{{$comment->id}}" class="delete-comment float-right btn-tool"><i class="fas fa-times"></i></button>
+                                                @endif
                                             </span>
                                             <span class="description">
                                                 {{$comment->created_at}}
                                             </span>
-                                            <!-- /.user-block -->
-                                            {{--                                            <label for="">Comment</label>--}}
                                             <p>
                                                 {{$comment->comment}}
                                             </p>
-                                        @endforeach
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
