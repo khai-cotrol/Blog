@@ -124,12 +124,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        $idPost = $user->posts->id;
-        $post = Post::findOrFail($idPost);
         $user->roles()->delete();
         $user->products()->delete();
-        $post->comments()->delete();
-        $post->delete();
         $user->posts()->delete();
         $user->comments()->delete();
         $user->delete();

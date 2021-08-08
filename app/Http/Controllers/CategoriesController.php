@@ -12,4 +12,9 @@ class CategoriesController extends Controller
         $categories = Categories::all();
         return view('welcome',compact('categories'));
     }
+
+    public function create()
+    {
+        return view('');
+    }
 }
