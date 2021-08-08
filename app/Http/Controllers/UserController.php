@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UserRequest;
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -31,6 +33,9 @@ class UserController extends Controller
      */
     public function create()
     {
+        if (!Gate::allows('crud')){
+            abort(403);
+        }
         $roles = Role::all();
         return view('admin.user.create', compact('roles'));
     }
@@ -92,7 +97,11 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, $id)
     {
         $user = User::findOrFail($id);
-        $path = $request->file('image')->store('images', 'public');
+        if (!$request->hasFile('image')) {
+            $path = $user->img;
+        } else {
+            $path = $request->file('image')->store('images', 'public');
+        }
         $data = [
             'name' => $request->name,
             'email' => $request->email,
@@ -132,5 +141,13 @@ class UserController extends Controller
         $text = $request->name;
         $users = User::where('name', 'LIKE' , '%' . $text . '%')->get();
         return view('admin.user.result_search', compact('users'));
+    }
+
+    public function myProfile($id)
+    {
+        $allPosts = Post::all()->where('user_id', $id);
+        $users = User::all();
+        $user = User::findOrFail($id);
+        return view('customer.yourprofile', compact('user', 'users', 'allPosts'));
     }
 }

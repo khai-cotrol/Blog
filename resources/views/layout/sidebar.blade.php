@@ -8,7 +8,7 @@ $categories =\App\Models\Categories::all();
             <img src="{{asset('storage/' . \Illuminate\Support\Facades\Auth::user()->img)}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-            <a href="#" class="d-block">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
+            <a href="{{route('myProfile', \Illuminate\Support\Facades\Auth::id())}}" class="d-block">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
         </div>
     </div>
     <!-- SidebarSearch Form -->
@@ -46,10 +46,12 @@ $categories =\App\Models\Categories::all();
                         </a>
                     </li>
                     <li class="nav-item">
+                        @can('crud')
                         <a href="{{route('user.adduser')}}" class="nav-link active">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Add New</p>
                         </a>
+                        @endcan
                     </li>
                 </ul>
             </li>
@@ -114,13 +116,15 @@ $categories =\App\Models\Categories::all();
                         </ul>
                     </li>
                     <li class="nav-item">
+                        @can('crud')
                         <a href="{{route('productOfUser',\Illuminate\Support\Facades\Auth::user()->id)}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>
-                                Products of User
+                                Products By Shop
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
+                        @endcan
                     </li>
                 </ul>
             </li>

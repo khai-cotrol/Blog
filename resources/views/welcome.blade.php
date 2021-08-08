@@ -53,7 +53,7 @@
                 </div>
                 <!-- /.card-header -->
                 @foreach($allPosts as $post)
-                    <div class="card-body">
+                    <div class="card-body" id="post-{{$post->id}}">
                         <div class="tab-content">
                             <div class="active tab-pane" id="activity">
                                 <!-- Post -->
@@ -62,8 +62,10 @@
                                         <img class="img-circle img-bordered-sm"
                                              src="{{asset('storage/' . $post->user->img)}}" alt="">
                                         <span class="username">
-                                            <a href="#">{{$post->user->name}}</a>
-                                            <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                                            <a href="{{route('user.profile', $post->user->id)}}">{{$post->user->name}}</a>
+                                            @if(\Illuminate\Support\Facades\Auth::user() == $post->user)
+                                            <button type="button" data-id="{{$post->id}}" class="delete-post float-right btn-tool"><i class="fas fa-times"></i></button>
+                                            @endif
                                         </span>
                                         <span class="description">{{$post->created_at}}</span>
                                     </div>

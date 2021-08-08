@@ -96,9 +96,8 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('logout')}}">
-                <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
+            <a class="nav-link" onclick="return confirm('Bạn muốn đăng xuất tài khoản?')" href="{{route('logout')}}">
+                <i class="fas fa-skull"></i>
             </a>
         </li>
         <li class="nav-item">

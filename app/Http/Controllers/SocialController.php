@@ -10,12 +10,13 @@ class SocialController extends Controller
 {
     public function redirect()
     {
+//        dd(12);
         return Socialite::driver('google')->redirect();
     }
 
     public function callback()
     {
-
+//dd(1213);
         $getInfor = Socialite::driver('google')->user();
         $user = $this->createUser($getInfor, 'google');
         auth()->login($user);

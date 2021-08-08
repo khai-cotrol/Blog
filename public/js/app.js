@@ -29,6 +29,32 @@ $(document).ready(function (){
         })
     })
 
+    $('.delete-comment').click(function (){
+        let idComment = $(this).attr('data-id')
+        let origin = location.origin
+        $.ajax({
+            url: origin + '/delete/' + idComment,
+            method: 'GET',
+            type: 'json',
+            success: function (res) {
+                $('#comment-' + idComment).remove()
+            }
+        })
+    })
+
+    $('.delete-post').click(function (){
+        let idPost = $(this).attr('data-id')
+        let origin = location.origin
+        $.ajax({
+            url: origin + '/postDelete/' + idPost,
+            method: 'GET',
+            type: 'json',
+            success: function (res){
+                $('#post-' + idPost).remove()
+            }
+        })
+    })
+
     $('#icon-eye').click(function (){
         let type = $('#password').attr('type')
         newType = (type === 'password') ? 'text' : 'password'

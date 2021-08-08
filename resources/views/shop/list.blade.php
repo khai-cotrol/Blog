@@ -8,9 +8,11 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
+                @can('crud')
                 <h6 class="m-0 font-weight-bold text-primary">
                     <a class="btn btn-success" href="{{route('product.create')}}">Them moi</a>
                 </h6>
+                @endcan
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -35,8 +37,11 @@
                                 <td>${{ $product->price}}</td>
                                 <td>{{ $product->category['name']}}</td>
                                 <td>
+                                    <button class="btn btn-danger">Add To Cart</button>
+                                @can('crud')
                                     <button type="button" data-id="{{$product->id}}" onclick="return confirm('Are you sure?')" class="delete-product btn btn-danger ">Delete</button>
-                                    <a href="{{route('product.edit', $product->id)}}"class="btn btn-danger">edit</a></td>
+                                    <a href="{{route('product.edit', $product->id)}}"class="btn btn-danger">edit</a>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach
