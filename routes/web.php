@@ -39,8 +39,13 @@ Route::middleware('auth')->group(function () {
         Route::post('/create', [ProductController::class, 'store'])->name('product.store');
         Route::get('/{id}/delete', [ProductController::class, 'destroy'])->name('product.delete');
         Route::get('/category/{id}',[ProductController::class,'productByCate'])->name('productByCate');
+
+        Route::get('/update/{id}', [ProductController::class, 'edit'])->name('product.edit');
+        Route::post('/update/{id}', [ProductController::class, 'update'])->name('product.update');
+
         Route::post('/search', [UserController::class, 'search'])->name('user.search');
         Route::post('/search/product', [ProductController::class, 'search'])->name('product.search');
+     
 
     });
 
