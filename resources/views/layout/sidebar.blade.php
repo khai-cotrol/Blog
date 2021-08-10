@@ -1,22 +1,25 @@
 <?php
-$categories =\App\Models\Categories::all();
+$categories = \App\Models\Categories::all();
 ?>
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="{{asset('storage/' . \Illuminate\Support\Facades\Auth::user()->img)}}" class="img-circle elevation-2" alt="">
+            <img src="{{asset('storage/' . \Illuminate\Support\Facades\Auth::user()->img)}}"
+                 class="img-circle elevation-2" alt="">
         </div>
         <div class="info">
-            <a href="{{route('myProfile', \Illuminate\Support\Facades\Auth::id())}}" class="d-block">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
+            <a href="{{route('myProfile', \Illuminate\Support\Facades\Auth::id())}}"
+               class="d-block">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
         </div>
     </div>
     <!-- SidebarSearch Form -->
-    <form action="{{route('user.search')}}" method="post">
+    <form action="{{route('user.search')}}" method="get">
         @csrf
         <div class="form-inline">
             <div class="input-group">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" name="name" aria-label="Search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" name="name"
+                       aria-label="Search">
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-sidebar">
                         <i class="fas fa-search fa-fw"></i>
@@ -31,38 +34,36 @@ $categories =\App\Models\Categories::all();
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-            <li class="nav-item">
-                <a href="#" class="nav-link active">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Member
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{route('user.list')}}" class="nav-link active">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>List</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        @can('crud')
-                        <a href="{{route('user.adduser')}}" class="nav-link active">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Add New</p>
-                        </a>
-                        @endcan
-                    </li>
-                </ul>
-            </li>
-            </li>
+            @can('crud')
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Member
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('user.list')}}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('user.adduser')}}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            @endcan
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fas fa-shopping-bag"></i>
                     <p>
                         Shopping
                         <i class="fas fa-angle-left right"></i>
-{{--                        <span class="badge badge-info right">6</span>--}}
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
@@ -117,13 +118,14 @@ $categories =\App\Models\Categories::all();
                     </li>
                     <li class="nav-item">
                         @can('crud')
-                        <a href="{{route('productOfUser',\Illuminate\Support\Facades\Auth::user()->id)}}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>
-                                Products By Shop
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
+                            <a href="{{route('productOfUser',\Illuminate\Support\Facades\Auth::user()->id)}}"
+                               class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Products By Shop
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
                         @endcan
                     </li>
                 </ul>

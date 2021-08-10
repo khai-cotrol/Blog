@@ -43,8 +43,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/update/{id}', [ProductController::class, 'edit'])->name('product.edit');
         Route::post('/update/{id}', [ProductController::class, 'update'])->name('product.update');
 
-        Route::post('/search', [UserController::class, 'search'])->name('user.search');
-        Route::post('/search/product', [ProductController::class, 'search'])->name('product.search');
+        Route::get('/search', [UserController::class, 'search'])->name('user.search');
+        Route::get('/search/product', [ProductController::class, 'search'])->name('product.search');
 
 
     });

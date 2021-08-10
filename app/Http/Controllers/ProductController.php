@@ -140,6 +140,6 @@ class ProductController extends Controller
     {
         $text = $request->name;
         $products = Product::where('name', 'LIKE', '%'.$text.'%')->get();
-        return view('shop.result_search', compact('products'));
+        return view('shop.list', compact('products'));
     }
 }

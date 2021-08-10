@@ -20,7 +20,7 @@
                 <i class="fas fa-search"></i>
             </a>
             <div class="navbar-search-block">
-                <form action="{{route('product.search')}}" method="post" class="form-inline">
+                <form action="{{route('product.search')}}" method="get" class="form-inline">
                     @csrf
                     <div class="input-group input-group-sm">
                         <input class="form-control form-control-navbar" name="name" type="search" placeholder="Search" aria-label="Search">

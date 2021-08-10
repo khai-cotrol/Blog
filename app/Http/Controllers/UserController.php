@@ -136,7 +136,7 @@ class UserController extends Controller
     {
         $text = $request->name;
         $users = User::where('name', 'LIKE' , '%' . $text . '%')->get();
-        return view('admin.user.result_search', compact('users'));
+        return view('admin.user.list', compact('users'));
     }
 
     public function myProfile($id)
