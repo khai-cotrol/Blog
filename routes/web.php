@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
@@ -39,6 +40,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/create', [ProductController::class, 'store'])->name('product.store');
         Route::get('/{id}/delete', [ProductController::class, 'destroy'])->name('product.delete');
         Route::get('/category/{id}',[ProductController::class,'productByCate'])->name('productByCate');
+        Route::get('createCate', [CategoriesController::class, 'create'])->name('addCate');
+        Route::post('createCate', [CategoriesController::class, 'store'])->name('addCategory');
 
         Route::get('/update/{id}', [ProductController::class, 'edit'])->name('product.edit');
         Route::post('/update/{id}', [ProductController::class, 'update'])->name('product.update');

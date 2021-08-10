@@ -92,6 +92,15 @@ $categories = \App\Models\Categories::all();
                                         </li>
                                     @endforeach
                                 </ul>
+                                @can('crud')
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="{{route('addCate')}}" class="nav-link">
+                                                <p>Add New</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                @endcan
                             </li>
                         </ul>
                     </li>

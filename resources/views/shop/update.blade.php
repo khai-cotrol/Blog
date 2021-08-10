@@ -28,7 +28,7 @@ $categories =\App\Models\Categories::all();
                 </div>
                 <div class="form-group">
                     <label for="inputDescription">Image</label>
-                    <input type="file" value="" name="image" id="image"
+                    <input type="file" hidden value="" name="image" id="image"
                            class="form-control">
                 </div>
                 <div class="form-group">
