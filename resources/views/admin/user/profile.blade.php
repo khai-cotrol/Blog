@@ -36,13 +36,28 @@
 
                             <ul class="list-group list-group-unbordered mb-3">
                                 <li class="list-group-item">
-                                    <b>Email</b> <a class="float-right">{{$user->email}}</a>
+                                    <b>Email</b>
+                                    @if(\Illuminate\Support\Facades\Auth::user()->name == $user->name)
+                                        <a class="float-right">{{$user->email}}</a>
+                                    @else
+                                        <a class="float-right">Not seen</a>
+                                    @endif
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Phone</b> <a class="float-right">{{$user->phone}}</a>
+                                    <b>Phone</b>
+                                    @if(\Illuminate\Support\Facades\Auth::user()->name == $user->name)
+                                        <a class="float-right">{{$user->phone}}</a>
+                                    @else
+                                        <a class="float-right">Not seen</a>
+                                    @endif
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Friends</b> <a class="float-right">{{count($users)}}</a>
+                                    <b>Friends</b>
+                                    @if(\Illuminate\Support\Facades\Auth::user()->name == $user->name)
+                                        <a class="float-right">{{count($users)}}</a>
+                                    @else
+                                        <a class="float-right">Not seen</a>
+                                    @endif
                                 </li>
                             </ul>
 
@@ -131,8 +146,10 @@
                                                         class="far fa-thumbs-up mr-1"></i>
                                                     Like</a>
                                                 <span class="float-right">
-                                                    <input type="hidden" value="{{$comment = \App\Models\Comment::where('post_id', $posts->id)->get()}}">
-                                                <a href="{{route('commentByPost', $posts->id)}}" class="link-black text-sm">
+                                                    <input type="hidden"
+                                                           value="{{$comment = \App\Models\Comment::where('post_id', $posts->id)->get()}}">
+                                                <a href="{{route('commentByPost', $posts->id)}}"
+                                                   class="link-black text-sm">
                                                     <i class="far fa-comments mr-1"></i> Comments ({{count($comment)}})
                                                 </a>
                                                 </span>
@@ -140,8 +157,10 @@
                                             <form action="{{route('status.comment')}}" method="post">
                                                 @csrf
                                                 <div class="input-group mb-3">
-                                                    <input type="text" name="comment" class="form-control" placeholder="Comment">
-                                                    <input type="text" hidden name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
+                                                    <input type="text" name="comment" class="form-control"
+                                                           placeholder="Comment">
+                                                    <input type="text" hidden name="user_id"
+                                                           value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                                                     <input type="text" hidden name="post_id" value="{{$posts->id}}">
                                                     <div class="input-group-append">
                                                         <div class="input-group-text">
