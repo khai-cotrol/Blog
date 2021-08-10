@@ -61,7 +61,7 @@
                 </div>
                 <div class="form-group">
                     <label for="inputDescription">Image</label>
-                    <input type="file" value="}" name="image" id="image"
+                    <input hidden type="file" value="}" name="image" id="image"
                            class="form-control">
                 </div>
                 @can('crud')
