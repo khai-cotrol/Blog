@@ -17,7 +17,7 @@
         <a href="#" class="brand-link">
             <img src="{{asset('img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-light">V_Blog</span>
         </a>
 
         <!-- Sidebar -->
@@ -36,7 +36,7 @@
             <div class="card">
                 <div class="card-header p-2">
                     <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Active</a>
+                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">V_Blog Connecting Peoples</a>
                         </li>
                     </ul>
                 </div>
