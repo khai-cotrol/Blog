@@ -48,5 +48,4 @@
         </div>
         <!-- /.card-body -->
     </div>
-    {{$users->links()}}
 @endsection
