@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,11 +16,11 @@ class PostController extends Controller
         return view('welcome', compact('allPosts'));
     }
 
-    public function post(Request $request, Post $post)
+    public function post(Request $request, Role $post)
     {
-        $post->title = $request->title;
-        $post->post = $request->post;
-        $post->user_id = $request->user_id;
+        $post->name = $request->title;
+//        $post->post = $request->post;
+//        $post->user_id = $request->user_id;
         $post->save();
         return redirect()->back();
     }
