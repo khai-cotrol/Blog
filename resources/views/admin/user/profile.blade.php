@@ -60,7 +60,11 @@
                                     @endif
                                 </li>
                             </ul>
-
+                            @if(\Illuminate\Support\Facades\Auth::user()->name == $user->name)
+                                <a href="{{route('user.edit', \Illuminate\Support\Facades\Auth::id())}}" class="btn btn-primary btn-block"><b>Update Your Infor</b></a>
+                            @else
+                                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                            @endif
                             <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                         </div>
                         <!-- /.card-body -->

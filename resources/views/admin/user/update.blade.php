@@ -59,9 +59,9 @@
                     <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>
-                <div class="form-group">
+                <div hidden class="form-group">
                     <label for="inputDescription">Image</label>
-                    <input hidden type="file" value="}" name="image" id="image"
+                    <input type="file" value="}" name="image" id="image"
                            class="form-control">
                 </div>
                 @can('crud')
