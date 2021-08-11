@@ -57,7 +57,7 @@ $categories = \App\Models\Categories::all();
                         </li>
                     </ul>
                 </li>
-            @endcan
+{{--            @endcan--}}
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fas fa-shopping-bag"></i>
@@ -100,7 +100,7 @@ $categories = \App\Models\Categories::all();
                                             </a>
                                         </li>
                                     </ul>
-                                @endcan
+{{--                                @endcan--}}
                             </li>
                         </ul>
                     </li>
