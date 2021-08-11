@@ -16,11 +16,11 @@ class PostController extends Controller
         return view('welcome', compact('allPosts'));
     }
 
-    public function post(Request $request, Role $post)
+    public function post(Request $request, Post $post)
     {
-        $post->name = $request->title;
-//        $post->post = $request->post;
-//        $post->user_id = $request->user_id;
+        $post->title = $request->title;
+        $post->post = $request->post;
+        $post->user_id = $request->user_id;
         $post->save();
         return redirect()->back();
     }
