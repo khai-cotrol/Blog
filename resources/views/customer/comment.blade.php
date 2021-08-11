@@ -26,12 +26,7 @@
                         <a href="#" class="link-black text-sm"><i
                                 class="far fa-thumbs-up mr-1"></i>
                             Like</a>
-                        <span class="float-right">
-                                        <a href="#" class="link-black text-sm">
-{{--                                            <input type="hidden" value="{{$comment = \App\Models\Comment::where('post_id', $post->id)->get()}}">--}}
-                                            {{--                                        <i class="far fa-comments mr-1"></i> Comments ({{count($comment)}})--}}
-                                        </a>
-                                        </span>
+                        <span class="float-right"><a href="#" class="link-black text-sm"></a></span>
                     </p>
                     <div class="card-body">
                         <div class="tab-content">
@@ -45,7 +40,7 @@
                                             <span class="username">
                                             <a href="#">{{$comment->user->name}}</a>
                                                 @if(\Illuminate\Support\Facades\Auth::user()->name == $comment->user->name)
-                                                    <button class="delete-post float-right btn-tool"><a class="fas fa-times" href="{{route('comment.destroy', $comment->id)}}"></a></button>
+                                                    <button class="delete-post float-right btn-tool"><a onclick="return confirm('Are you sure ?')" class="fas fa-times" href="{{route('comment.destroy', $comment->id)}}"></a></button>
                                                 @endif
                                             </span>
                                             <span class="description">
