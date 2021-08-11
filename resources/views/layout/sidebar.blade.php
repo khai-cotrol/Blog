@@ -34,7 +34,7 @@ $categories = \App\Models\Categories::all();
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-            @can('crud')
+{{--            @can('crud')--}}
                 <li class="nav-item">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -92,7 +92,7 @@ $categories = \App\Models\Categories::all();
                                         </li>
                                     @endforeach
                                 </ul>
-                                @can('crud')
+{{--                                @can('crud')--}}
                                     <ul class="nav nav-treeview">
                                         <li class="nav-item">
                                             <a href="{{route('addCate')}}" class="nav-link">
