@@ -59,7 +59,7 @@
                     <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>
-                <div hidden class="form-group">
+                <div class="form-group">
                     <label for="inputDescription">Image</label>
                     <input type="file" value="}" name="image" id="image"
                            class="form-control">
